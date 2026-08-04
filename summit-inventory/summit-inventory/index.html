@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Inventory | Summit Group</title>
+<meta name="description" content="Current property inventory from Summit Group. Call 954-594-0894.">
+<meta property="og:title" content="Current Inventory From Summit Group">
+<meta property="og:description" content="Browse current property listings from Summit Group.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f9f7f5;
+    --warm: #60564d;
+    --warm-light: #8a7d73;
+    --warm-pale: #e8e2db;
+    --warm-ultra: #f4f0ec;
+    --mid: #2a2420;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 5vw;
+    background: rgba(249,247,245,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--warm-pale);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+  .nav-logo img { height: 40px; width: auto; }
+  .nav-logo .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; letter-spacing: 0.06em; }
+  .nav-logo .wordmark span { color: var(--warm); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--warm); }
+  .nav-cta { background: var(--warm); color: var(--white) !important; padding: 0.6rem 1.4rem; border-radius: 2px; }
+  .nav-cta:hover { background: var(--mid) !important; color: var(--white) !important; }
+
+  /* BUTTONS */
+  .btn-primary, .btn-outline, .btn-white, .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+    padding: 0.9rem 2rem; border: 2px solid; transition: all 0.25s; cursor: pointer;
+  }
+  .btn-primary { background: var(--black); color: var(--white); border-color: var(--black); }
+  .btn-primary:hover { background: var(--warm); border-color: var(--warm); }
+  .btn-outline { background: transparent; color: var(--warm); border-color: var(--warm); }
+  .btn-outline:hover { background: var(--warm); color: var(--white); }
+  .btn-white { background: var(--white); color: var(--black); border-color: var(--white); }
+  .btn-white:hover { background: transparent; color: var(--white); }
+  .btn-outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  /* SECTION SHARED */
+  section { padding: 7rem 8vw; }
+  .section-eyebrow { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--warm); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--warm); flex-shrink: 0; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; }
+  .section-title em { font-style: italic; color: var(--warm); }
+
+  /* HERO */
+  #hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 12rem 8vw 7rem; background: var(--warm-ultra); position: relative; }
+  #hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--warm-light), transparent); }
+  .hero-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--warm); }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7.5vw, 6rem); font-weight: 300; line-height: 1.02; margin-bottom: 0.3rem; }
+  .hero-title em { font-style: italic; color: var(--warm); display: block; }
+  .hero-divider { width: 60px; height: 1px; background: var(--warm); margin: 1.6rem 0 2rem; }
+  .hero-sub { font-size: 0.9rem; font-weight: 300; line-height: 1.9; color: #4a4340; max-width: 470px; margin-bottom: 3rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .hero-license { margin-top: 3.5rem; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm-light); }
+
+  /* INVENTORY */
+  #inventory { background: var(--white); }
+  .inventory-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; padding-bottom: 2rem; border-bottom: 1px solid var(--warm-pale); }
+  .inventory-count { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--warm-light); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3rem 2.2rem; margin-top: 3.5rem; }
+  .card { border: 1px solid var(--warm-pale); background: var(--white); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
+  .card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--warm); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; z-index: 2; }
+  .card:hover { box-shadow: 0 12px 40px rgba(96,86,77,0.12); transform: translateY(-3px); }
+  .card:hover::before { transform: scaleX(1); }
+  .card-media { position: relative; aspect-ratio: 4/3; background: var(--warm-ultra); overflow: hidden; }
+  .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .card:hover .card-media img { transform: scale(1.04); }
+  .card-status { position: absolute; top: 1rem; left: 1rem; background: var(--warm); color: var(--white); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.45rem 0.9rem; }
+  .card-body { padding: 1.8rem 1.8rem 2rem; display: flex; flex-direction: column; flex: 1; }
+  .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 400; line-height: 1; }
+  .card-address { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.04em; margin-top: 0.6rem; color: var(--black); }
+  .card-city { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-light); margin-top: 0.35rem; }
+  .card-specs { display: flex; margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid var(--warm-pale); }
+  .card-specs div { flex: 1; text-align: center; border-right: 1px solid var(--warm-pale); }
+  .card-specs div:last-child { border-right: 0; }
+  .card-specs strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; }
+  .card-specs span { display: block; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--warm-light); margin-top: 0.3rem; }
+  .card-cta { margin-top: 1.6rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); text-decoration: none; display: flex; align-items: center; justify-content: space-between; }
+  .card-cta:hover { color: var(--black); }
+  .card-cta .arrow { transition: transform 0.2s; }
+  .card-cta:hover .arrow { transform: translateX(4px); }
+  .empty { padding: 5rem 0; text-align: center; font-weight: 300; color: var(--warm-light); }
+
+  /* CONTACT */
+  #contact { background: var(--mid); color: var(--white); text-align: center; }
+  #contact .section-eyebrow { color: rgba(249,247,245,0.55); justify-content: center; }
+  #contact .section-eyebrow::before { display: none; }
+  #contact .section-title { color: var(--white); max-width: 620px; margin: 0 auto 1.5rem; }
+  .contact-sub { font-size: 0.88rem; font-weight: 300; color: rgba(249,247,245,0.6); margin-bottom: 3rem; }
+  .contact-phone { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; color: var(--white); text-decoration: none; display: inline-block; margin-bottom: 2.5rem; letter-spacing: 0.02em; }
+  .contact-phone:hover { color: var(--warm-pale); }
+  .contact-actions { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+  .contact-details { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; color: rgba(249,247,245,0.5); }
+  .contact-details a { color: rgba(249,247,245,0.6); text-decoration: none; transition: color 0.2s; }
+  .contact-details a:hover { color: var(--warm-pale); }
+  .contact-divider { margin: 0 0.75rem; color: rgba(249,247,245,0.25); }
+
+  /* FORM */
+  #enquire { background: var(--warm-ultra); }
+  .form-wrap { max-width: 620px; margin: 0 auto; }
+  .form-wrap .section-eyebrow { justify-content: center; }
+  .form-wrap .section-eyebrow::before { display: none; }
+  .form-wrap .section-title { text-align: center; }
+  .form-field { margin-bottom: 1.2rem; }
+  .form-field label { display: block; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.5rem; }
+  .form-field input, .form-field textarea, .form-field select {
+    width: 100%; padding: 0.9rem 1rem; border: 1px solid var(--warm-pale); background: var(--white);
+    font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 300; color: var(--black);
+  }
+  .form-field textarea { min-height: 110px; resize: vertical; }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus { outline: none; border-color: var(--warm); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .hp { position: absolute; left: -9999px; }
+  .form-note { font-size: 0.72rem; font-weight: 300; color: var(--warm-light); margin-top: 1.2rem; text-align: center; }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 3rem 8vw 2rem; border-top: 1px solid rgba(255,255,255,0.04); }
+  .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; padding-bottom: 2rem; }
+  .footer-brand { display: flex; align-items: center; gap: 1rem; }
+  .footer-brand img { height: 38px; filter: invert(1) brightness(1.6); }
+  .footer-brand .wordmark { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: rgba(249,247,245,0.6); letter-spacing: 0.06em; }
+  .footer-brand .wordmark span { color: var(--warm-light); }
+  .footer-contact { display: flex; gap: 2rem; flex-wrap: wrap; font-size: 0.7rem; letter-spacing: 0.1em; }
+  .footer-contact a { color: rgba(249,247,245,0.55); text-decoration: none; }
+  .footer-contact a:hover { color: var(--white); }
+  .footer-legal { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.6rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+  .footer-legal p { font-size: 0.6rem; font-weight: 400; line-height: 1.9; letter-spacing: 0.04em; color: rgba(249,247,245,0.28); max-width: 68ch; }
+  .eho { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; color: rgba(249,247,245,0.35); }
+  .eho svg { width: 26px; height: 26px; }
+  .eho span { font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; max-width: 11ch; line-height: 1.4; }
+
+  /* STICKY MOBILE CALL */
+  .stickycall { display: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  #hero > * { animation: fadeUp 0.7s ease both; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title   { animation-delay: 0.2s; }
+  .hero-divider { animation-delay: 0.3s; }
+  .hero-sub     { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.5s; }
+  .hero-license { animation-delay: 0.6s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .form-row { grid-template-columns: 1fr; }
+    nav .nav-links li:not(:last-child) { display: none; }
+    section { padding: 5rem 6vw; }
+    #hero { padding: 9rem 6vw 5rem; min-height: auto; }
+  }
+  @media (max-width: 620px) {
+    body { padding-bottom: 66px; }
+    .stickycall {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 200;
+      background: var(--warm); color: var(--white); text-align: center; text-decoration: none;
+      padding: 1.15rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    nav .nav-cta { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="images/logo.png" alt="Summit Group" onerror="this.style.display='none'">
+    <span class="wordmark">Summit <span>Group</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:9545940894" class="nav-cta">954-594-0894</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Updated <span id="updated">July 2026</span></p>
+  <h1 class="hero-title">Current Inventory<em>From Summit Group</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Every property we currently have on the market. See one you like? Call and we'll get you inside it.</p>
+  <div class="hero-actions">
+    <a href="#inventory" class="btn-primary">Browse the Properties</a>
+    <a href="tel:9545940894" class="btn-outline">Call 954-594-0894</a>
+  </div>
+  <p class="hero-license">Samson Companies, LLC &nbsp;·&nbsp; License #SL3389594</p>
+</section>
+
+<!-- INVENTORY -->
+<section id="inventory">
+  <div class="inventory-head">
+    <div>
+      <p class="section-eyebrow">The Inventory</p>
+      <h2 class="section-title">Active <em>Listings</em></h2>
+    </div>
+    <p class="inventory-count" id="count"></p>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>No active listings at the moment. Call 954-594-0894 — we know what's coming.</p>
+</section>
+
+<!-- ENQUIRE -->
+<section id="enquire">
+  <div class="form-wrap">
+    <p class="section-eyebrow">Tell Us What You Need</p>
+    <h2 class="section-title">Send a <em>Message</em></h2>
+    <form name="inventory-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+      <input type="hidden" name="form-name" value="inventory-inquiry">
+      <p class="hp"><label>Leave blank: <input name="bot-field"></label></p>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="type">Property type</label>
+          <select id="type" name="type">
+            <option>Residential</option>
+            <option>Commercial</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="listing">Property you're asking about</label>
+        <select id="listing" name="listing"><option>Not sure yet</option></select>
+      </div>
+      <div class="form-field">
+        <label for="message">Anything we should know</label>
+        <textarea id="message" name="message" placeholder="Timeline, budget, must-haves…"></textarea>
+      </div>
+      <button class="btn-primary" type="submit">Send It</button>
+      <p class="form-note">We answer the phone faster than the inbox — call 954-594-0894 if it's time-sensitive.</p>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow">Ready When You Are</p>
+  <h2 class="section-title">Pick a property. <em>We'll open the door.</em></h2>
+  <p class="contact-sub">Showings, pricing, what sold down the street — one call gets you a real answer.</p>
+  <a href="tel:9545940894" class="contact-phone">954-594-0894</a>
+  <div class="contact-actions">
+    <a href="tel:9545940894" class="btn-white">Call Summit Group</a>
+    <a href="https://form.jotform.com/222975449301156" target="_blank" rel="noopener" class="btn-outline-white">Start Your Homebuying Journey</a>
+  </div>
+  <div class="contact-details">
+    <a href="mailto:Hello@Summit-RealEstate-Group.com">Hello@Summit-RealEstate-Group.com</a>
+    <span class="contact-divider">·</span>
+    <a href="tel:9545940894">954-594-0894</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Summit Group" onerror="this.style.display='none'">
+      <span class="wordmark">Summit <span>Group</span></span>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:9545940894">954-594-0894</a>
+      <a href="mailto:Hello@Summit-RealEstate-Group.com">Hello@Summit-RealEstate-Group.com</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; <span id="year">2026</span> Summit Group. All rights reserved. Summit Group is a real estate team of Samson Companies, LLC. License #SL3389594. All information is deemed reliable but not guaranteed and is subject to change, including prior sale, price change, or withdrawal. Square footage and measurements are approximate.</p>
+    <div class="eho">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+        <path d="M6 30 32 10l26 20"/>
+        <path d="M12 30v22h40V30"/>
+        <path d="M22 38h20M22 46h20" stroke-width="4"/>
+      </svg>
+      <span>Equal Housing Opportunity</span>
+    </div>
+  </div>
+</footer>
+
+<a class="stickycall" href="tel:9545940894">Call 954-594-0894</a>
+
+<script>
+/* ==========================================================================
+   PROPERTIES load from listings.json.
+   Edit them in the CMS at /admin/  (or by hand in listings.json).
+   Nothing in this file needs to change when inventory changes.
+   ========================================================================== */
+const PHONE = "9545940894";
+
+const usd = n => "$" + Number(n || 0).toLocaleString("en-US");
+const grid = document.getElementById("grid");
+const empty = document.getElementById("empty");
+const countEl = document.getElementById("count");
+const select = document.getElementById("listing");
+
+function specRow(l){
+  const cells = [];
+  if (Number(l.beds)  > 0) cells.push(`<div><strong>${l.beds}</strong><span>Beds</span></div>`);
+  if (Number(l.baths) > 0) cells.push(`<div><strong>${l.baths}</strong><span>Baths</span></div>`);
+  if (Number(l.sqft)  > 0) cells.push(`<div><strong>${Number(l.sqft).toLocaleString("en-US")}</strong><span>Sq Ft</span></div>`);
+  return cells.join("");
+}
+
+function card(l){
+  const cta = l.link
+    ? `<a class="card-cta" href="${l.link}" target="_blank" rel="noopener">View Details <span class="arrow">&rarr;</span></a>`
+    : `<a class="card-cta" href="tel:${PHONE}">Call About This Property <span class="arrow">&rarr;</span></a>`;
+  const photo = l.image
+    ? `<img src="${l.image}" alt="${l.address}, ${l.city}" loading="lazy" onerror="this.remove()">`
+    : "";
+  return `
+  <article class="card">
+    <div class="card-media">
+      <span class="card-status">${l.type || "Residential"}</span>
+      ${photo}
+    </div>
+    <div class="card-body">
+      <p class="card-price">${usd(l.price)}</p>
+      <h3 class="card-address">${l.address || ""}</h3>
+      <p class="card-city">${l.city || ""}</p>
+      <div class="card-specs">${specRow(l)}</div>
+      ${cta}
+    </div>
+  </article>`;
+}
+
+function render(list){
+  grid.innerHTML = list.map(card).join("");
+  empty.hidden = list.length > 0;
+  countEl.textContent = list.length
+    ? list.length + (list.length === 1 ? " property currently available" : " properties currently available")
+    : "";
+  select.innerHTML = '<option>Not sure yet</option>';
+  list.forEach(l => {
+    const o = document.createElement("option");
+    o.textContent = l.address + " \u2014 " + usd(l.price);
+    select.appendChild(o);
+  });
+}
+
+async function loadListings(){
+  try {
+    const res = await fetch("listings.json?v=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    render(Array.isArray(data.properties) ? data.properties : []);
+  } catch (err) {
+    console.error("Could not load listings.json —", err,
+      "\nIf you opened this file directly from your computer, browsers block that. Use the live site or a local server.");
+    render([]);
+  }
+}
+loadListings();
+
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("updated").textContent =
+  new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
+</script>
+
+<!-- Netlify Identity: lets invite links open the CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+</body>
+</html>
