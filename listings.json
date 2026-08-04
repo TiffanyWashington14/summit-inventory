@@ -1,0 +1,37 @@
+{
+  "properties": [
+    {
+      "type": "Residential",
+      "price": 749000,
+      "address": "Golden Gate Estates",
+      "city": "Naples, FL",
+      "beds": 4,
+      "baths": 3,
+      "sqft": 2480,
+      "image": "",
+      "link": ""
+    },
+    {
+      "type": "Residential",
+      "price": 615000,
+      "address": "Weber Boulevard",
+      "city": "Naples, FL",
+      "beds": 3,
+      "baths": 2,
+      "sqft": 1940,
+      "image": "",
+      "link": ""
+    },
+    {
+      "type": "Residential",
+      "price": 1150000,
+      "address": "Everglades Boulevard",
+      "city": "Naples, FL",
+      "beds": 5,
+      "baths": 4,
+      "sqft": 3610,
+      "image": "",
+      "link": ""
+    }
+  ]
+}

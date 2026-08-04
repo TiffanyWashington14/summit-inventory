@@ -1,0 +1,88 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://inventory.summit-realestate-group.com
+logo_url: /images/logo.png
+
+collections:
+  - name: "inventory"
+    label: "Inventory"
+    files:
+      - name: "listings"
+        label: "Property Listings"
+        file: "listings.json"
+        format: "json"
+        editor:
+          preview: false
+        fields:
+          - label: "Properties"
+            name: "properties"
+            widget: "list"
+            label_singular: "Property"
+            summary: "{{fields.address}} — ${{fields.price}}"
+            collapsed: false
+            fields:
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                options: ["Residential", "Commercial"]
+                default: "Residential"
+                hint: "Sets the badge shown on the photo."
+
+              - label: "Price"
+                name: "price"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                hint: "Numbers only — no dollar sign or commas. Example: 749000"
+
+              - label: "Address or property name"
+                name: "address"
+                widget: "string"
+                hint: "Example: Golden Gate Estates, or Flex / Warehouse Suite"
+
+              - label: "City"
+                name: "city"
+                widget: "string"
+                default: "Naples, FL"
+
+              - label: "Beds"
+                name: "beds"
+                widget: "number"
+                value_type: "int"
+                default: 0
+                min: 0
+                hint: "Enter 0 to hide this from the card."
+
+              - label: "Baths"
+                name: "baths"
+                widget: "number"
+                value_type: "float"
+                default: 0
+                min: 0
+                hint: "Half baths are fine — 2.5. Enter 0 to hide."
+
+              - label: "Square feet"
+                name: "sqft"
+                widget: "number"
+                value_type: "int"
+                default: 0
+                min: 0
+                hint: "Enter 0 to hide this from the card."
+
+              - label: "Photo"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Upload the property photo. Landscape works best."
+
+              - label: "Listing link"
+                name: "link"
+                widget: "string"
+                required: false
+                default: ""
+                hint: "Optional. Paste an MLS or property page URL. Leave blank and the card shows a Call button instead."
