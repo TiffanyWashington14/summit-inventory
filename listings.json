@@ -1,37 +1,37 @@
 {
   "properties": [
     {
-      "type": "Residential",
-      "price": 749000,
-      "address": "Golden Gate Estates",
-      "city": "Naples, FL",
-      "beds": 4,
       "baths": 3,
-      "sqft": 2480,
-      "image": "",
-      "link": ""
+      "price": 215000,
+      "city": "Plantation, FL",
+      "sqft": 2080,
+      "beds": 4,
+      "address": "Jacaranda at Plantation",
+      "type": "Residential",
+      "link": "https://matrix.beachesmls.com/matrix/shared/GvgcJkstgg/8226NW8thPlace",
+      "image": "/images/uploads/8226-nw-8th-pl-unit-6-fort-lauderdale-florida-33324.jpg"
     },
     {
-      "type": "Residential",
-      "price": 615000,
+      "baths": 3,
+      "price": 425000,
+      "city": "St. James City, FL",
+      "sqft": 999,
+      "beds": 6,
       "address": "Weber Boulevard",
-      "city": "Naples, FL",
-      "beds": 3,
-      "baths": 2,
-      "sqft": 1940,
-      "image": "",
-      "link": ""
+      "type": "Residential",
+      "link": "https://matrix.beachesmls.com/matrix/shared/MSL0mTwvgg/4157BERKSHIRERoad",
+      "image": "/images/uploads/4157-berkshire-rd-st.-james-city-florida-33956.jpg"
     },
     {
-      "type": "Residential",
-      "price": 1150000,
-      "address": "Everglades Boulevard",
-      "city": "Naples, FL",
-      "beds": 5,
-      "baths": 4,
-      "sqft": 3610,
-      "image": "",
-      "link": ""
+      "baths": 0,
+      "price": 20000,
+      "city": "Fort Myers, FL",
+      "sqft": 0,
+      "beds": 0,
+      "address": "Land Development Opportunity | Approved Plans",
+      "type": "Commercial",
+      "link": "",
+      "image": "/images/uploads/06f6541d-bc8f-4b41-bb44-3aef191752f3.jpg"
     }
   ]
 }
