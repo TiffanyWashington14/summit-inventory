@@ -32,6 +32,17 @@
       "type": "Commercial",
       "link": "",
       "image": "/images/uploads/06f6541d-bc8f-4b41-bb44-3aef191752f3.jpg"
+    },
+    {
+      "baths": 0,
+      "price": 20000,
+      "city": "Fort Myers, FL",
+      "sqft": 0,
+      "beds": 0,
+      "address": "Vacant Land Opportunity Portfolio",
+      "type": "Commercial",
+      "link": "https://drive.google.com/drive/folders/19Qt3B26WqKteH5k_dxf8ffnBStI_N70c?usp=sharing",
+      "image": "/images/uploads/tw-land.jpeg"
     }
   ]
 }
