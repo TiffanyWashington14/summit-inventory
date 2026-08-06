@@ -43,6 +43,17 @@
       "type": "Commercial",
       "link": "https://drive.google.com/drive/folders/19Qt3B26WqKteH5k_dxf8ffnBStI_N70c?usp=sharing",
       "image": "/images/uploads/tw-land.jpeg"
+    },
+    {
+      "baths": 2,
+      "price": 400000,
+      "city": "Clewiston, FL ",
+      "sqft": 2001,
+      "beds": 3,
+      "address": "Single Family Home",
+      "type": "Residential",
+      "link": "",
+      "image": "/images/uploads/417-royal-palm-ave-clewiston-fl-33440.jpg"
     }
   ]
 }
